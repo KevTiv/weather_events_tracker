@@ -1,20 +1,43 @@
+import { useEffect, useState } from "react"
 
 type locationInfoProps ={
     info:{
-        eventType: string,
         id: string,
-        title: string
+        details: string
     }
 }
 const LocationInfoBox = ({info}:locationInfoProps) => {
+    const [eventId, setId] = useState<string>()
+    const [eventType,setType] = useState<string>();
+    const [eventLocation, setLocation] = useState<string>();
+    const [eventCountry, setCountry] = useState<string>();
+
+    
+    useEffect(()=>{
+        const getInfo = ()=>{
+            try {
+                setId(info.id);
+
+                const infoDetails = info.details.split(' - ');
+                setType(infoDetails[0]);
+                setLocation(infoDetails[1]);
+                setCountry(infoDetails[2]);
+            } catch (err) {
+                console.error(err);
+            }
+            
+        }
+        getInfo();
+    },[info.id])
     return (
         <>
-            <div className="location-info-container w-96 p-4 
-                bg-gray-400 text-red-800 text-2xl rounded-xl opacity-70">
-                <h2 className="p-4">{info.eventType} Location Info</h2>
-                <ul className="p-6">
-                    <li> Id: <strong>{info.id}</strong></li>
-                    <li>Title: <strong>{info.title}</strong></li>
+            <div className="location-info-container ">
+                <h2>Weather Event Info</h2>
+                <ul>
+                    <li> Id: <strong>{eventId}</strong></li>
+                    <li>Type: <strong>{eventType}</strong></li>
+                    {(!eventLocation || eventLocation.length === 0) ? <li></li> : <li>Location: <strong>{eventLocation}</strong></li>}
+                    {(!eventCountry || eventCountry.length === 0) ? <li></li> : <li>Country: <strong>{eventCountry}</strong></li>}
                 </ul>
             </div>
         </>

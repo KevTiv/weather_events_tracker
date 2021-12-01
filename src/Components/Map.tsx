@@ -1,6 +1,6 @@
 import {useState} from 'react';
 import GoogleMapReact from 'google-map-react';
-import {LocationFireMarker, LocationVolcanoMarker, LocationIceMarker} from './LocationMarker';
+import {LocationFireMarker, LocationVolcanoMarker, LocationStormMarker} from './LocationMarker';
 import LocationInfoBox from './LocationInfoBox';
 //Props defintions for TS.
 type mapProps = {
@@ -9,15 +9,17 @@ type mapProps = {
     center:{
         lat: number,
         lng: number
-    }
+    },
+    showFires: boolean,
+    showVolcanos: boolean,
+    showStorms: boolean
 }
 type infoProps={
-    eventType: string,
     id: string,
-    title: string
+    details: string
 }
 //Google map component
-const Map = ({eventData, center, zoom}: mapProps) => {
+const Map = ({eventData, center, zoom, showFires, showVolcanos, showStorms}: mapProps) => {
     //API key stored in .env file
     const googleMapApiKey:string|undefined = process.env.REACT_APP_GOOGLE_MAP_API_KEY;
     const [eventLocationInfo, setEventLocationInfo] = useState<infoProps>();
@@ -36,8 +38,7 @@ const Map = ({eventData, center, zoom}: mapProps) => {
                     onClick={()=>{
                         setEventLocationInfo({
                             id: event.id,
-                            title: event.title,
-                            eventType: event.categories[0].title
+                            details: event.title
                         })
                     }}
                 />
@@ -57,8 +58,7 @@ const Map = ({eventData, center, zoom}: mapProps) => {
                     onClick={()=>{
                         setEventLocationInfo({
                             id: event.id,
-                            title: event.title,
-                            eventType: event.categories[0].title
+                            details: event.title
                         })
                     }}
                 />
@@ -68,17 +68,16 @@ const Map = ({eventData, center, zoom}: mapProps) => {
         }
     })
     const IceMarkers = eventData.map((event:any) =>{
-        if(event.categories[0].id === 15){
+        if(event.categories[0].id === 10){
             return(
-                <LocationIceMarker
+                <LocationStormMarker
                     key={event.id}  
                     lat={event.geometries[0].coordinates[1]} 
                     lng={event.geometries[0].coordinates[0]} 
                     onClick={()=>{
                         setEventLocationInfo({
                             id: event.id,
-                            title: event.title,
-                            eventType: event.categories[0].title
+                            details: event.title
                         })
                     }}
                 />
@@ -87,20 +86,22 @@ const Map = ({eventData, center, zoom}: mapProps) => {
             return null;
         }
     })
-
+    // showFires: boolean,
+    //     showVolcanos: boolean,
+    //     showStorms: boolean,
+    //     showAll: boolean
     return (
         <>
-            <div className="map-container w-10/12">
+            <div className="map-container">
                 <GoogleMapReact
                     bootstrapURLKeys = {{key:googleMapApiKey!}}
                     defaultCenter={center}
                     defaultZoom={zoom}
                 >
                     {/* <LocationFireMarker lat={center.lat} lng={center.lng} onClick={onClickFireIcon}/> */}
-                    
-                    {fireMarkers}
-                    {volcanoMarkers}
-                    {IceMarkers}
+                    {(showFires) ? fireMarkers : <></>}
+                    {(showVolcanos) ?volcanoMarkers : <></>}
+                    {(showStorms) ?IceMarkers : <></>}
                 </GoogleMapReact>
                 {eventLocationInfo && <LocationInfoBox info={eventLocationInfo}/>}
             </div>
