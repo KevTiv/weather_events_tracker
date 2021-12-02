@@ -1,23 +1,40 @@
+:root {
+  --app-bg-color: #fccc77;
+  --header-h1-color: #2e3151;
+  --title-color: #2e3151;
+  --container-bg-color: #fdfcf3;
+}
 .App {
   width: 100vw;
   height: 100vh;
   padding: 0;
   margin: 0;
-  @apply bg-gray-300 block;
+  overflow: hidden;
+  background-color: var(--app-bg-color);
+  /* background: rgb(252, 204, 119); */
+  background: radial-gradient(
+    circle,
+    rgba(252, 204, 119, 0.2566384304775281) 0%,
+    rgba(252, 204, 119, 1) 100%
+  );
+  @apply block;
 }
 
 .header-wrapper {
-  @apply w-full p-0 top-0 left-0 h-56 bg-red-500 z-10 flex items-center justify-center;
+  @apply w-full p-0 top-0 left-0 h-40 z-10 flex items-center justify-start;
 }
 .header-wrapper h1 {
-  @apply text-gray-300 text-6xl font-bold;
+  color: var(--header-h1-color);
+  @apply text-4xl font-bold ml-12 shadow-lg p-4;
 }
 .weather-app-visual {
+  max-height: 80%;
   @apply w-11/12 flex justify-center;
 }
 .map-container {
   aspect-ratio: 1.5;
-  @apply w-4/6 mx-auto my-5;
+  background-color: var(--container-bg-color);
+  @apply w-4/6 mx-auto my-5 p-6 shadow-lg rounded-xl;
 }
 
 .loader-container {
@@ -33,44 +50,275 @@
 }
 .loader-container h1 {
   font-size: 8rem;
-  @apply text-gray-600 mx-80;
+  color: var(--title-color);
+  @apply mx-80;
 }
 
 .button-control-wrapper {
-  @apply w-1/5 left-32 my-12;
+  background-color: var(--container-bg-color);
+  height: 35%;
+  top: -1.7rem;
+  @apply relative w-1/5 my-12 p-6 rounded-xl shadow-xl;
 }
 .button-control-wrapper h2 {
-  @apply text-5xl text-gray-700 font-extrabold;
+  color: var(--title-color);
+  @apply text-3xl font-extrabold;
 }
-.button-control-wrapper div {
+.button-control-container div {
   @apply flex mx-2 my-4 items-center;
 }
 
-.button-control-wrapper button {
-  aspect-ratio: 5;
-  @apply border-red-400 border-8 text-red-800 w-2/3 rounded-2xl;
+.button-control-container button {
+  aspect-ratio: 4;
+  min-width: min(12rem, 300px);
+  color: var(--title-color);
+  @apply border-red-400 border-4 w-2/3 rounded-2xl flex justify-center items-center;
 }
-.button-control-wrapper button:hover {
+.button-control-container button:hover {
   @apply bg-red-400 text-gray-300;
 }
-.button-control-wrapper button span {
-  @apply text-3xl font-bold;
+.button-control-container button span {
+  @apply text-lg font-bold m-2;
 }
 .location-info-container {
   z-index: 3;
-  /* top: 3rem;
-  right: 6rem; */
+  top: -22rem;
+  left: 57rem;
+  background-color: var(--container-bg-color);
+  color: var(--title-color);
   /* aspect-ratio: 2.25; */
-  @apply w-1/3 h-auto mx-8 p-4 bg-gray-400 text-red-800 text-2xl rounded-xl opacity-70 
-  relative -top-96 left-6;
+  @apply w-80 h-auto mx-8 p-4 rounded-xl shadow-xl
+  relative;
 }
 .location-info-container h2 {
-  @apply p-4 text-4xl font-bold;
+  @apply p-4 text-3xl font-bold;
 }
 .location-info-container ul {
-  @apply p-3 text-3xl font-semibold;
+  @apply p-3 text-lg font-semibold;
 }
 
 .icon-marker {
-  @apply text-4xl;
+  @apply text-2xl;
+}
+
+@media (max-width: 639px) {
+  .App {
+    height: 150vh;
+  }
+  .header-wrapper {
+    @apply w-full h-36;
+  }
+  .header-wrapper h1 {
+    @apply text-2xl ml-3;
+  }
+  .weather-app-visual {
+    @apply w-full block;
+  }
+  .map-container {
+    height: 32rem;
+    top: 8rem;
+    width: 95%;
+    @apply p-3 relative;
+  }
+
+  .loader-container {
+  }
+  .loader-container img {
+  }
+  .loader-container h1 {
+  }
+
+  .button-control-wrapper {
+    width: 95%;
+    height: 15%;
+    top: -36rem;
+    @apply relative ml-2 p-2;
+  }
+  .button-control-wrapper h2 {
+    @apply text-lg ml-3;
+  }
+  .button-control-container div {
+    @apply flex flex-col space-x-1;
+  }
+  .button-control-container button {
+    min-width: min(5rem, 180px);
+    aspect-ratio: 1.5;
+    @apply relative w-4 border-2 flex justify-center items-center;
+  }
+  .button-marker {
+    @apply text-4xl;
+  }
+  .button-control-container button span {
+    display: none;
+  }
+  .button-control-container {
+    @apply flex flex-row;
+  }
+  .location-info-container {
+    top: 2.5rem;
+    left: -2.75rem;
+    @apply w-full;
+  }
+  .location-info-container h2 {
+    @apply text-xl;
+  }
+  .location-info-container ul {
+    @apply text-lg;
+  }
+}
+@media (min-width: 640px) and (max-width: 767px) {
+  .App {
+    height: 130vh;
+  }
+  .header-wrapper {
+    @apply h-40;
+  }
+  .header-wrapper h1 {
+    @apply text-5xl;
+  }
+  .weather-app-visual {
+    width: 65%;
+
+    @apply h-1/2 ml-12;
+  }
+  .map-container {
+    @apply w-full p-4 ml-4;
+  }
+
+  .loader-container {
+  }
+  .loader-container img {
+  }
+  .loader-container h1 {
+  }
+
+  .button-control-wrapper {
+    width: 23%;
+    @apply flex flex-col;
+  }
+  .button-control-wrapper h2 {
+    @apply text-3xl w-72;
+  }
+  .button-control-container div {
+  }
+  .button-control-container button {
+    @apply flex justify-center items-center border-2;
+  }
+  .button-marker {
+    @apply w-7 m-2;
+  }
+  .button-control-container button span {
+    @apply text-lg;
+  }
+  .button-control-container {
+  }
+  .location-info-container {
+    top: 0.75rem;
+    left: -2.25rem;
+    @apply w-96;
+  }
+  .location-info-container h2 {
+    @apply text-2xl;
+  }
+  .location-info-container ul {
+    @apply text-xl;
+  }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .App {
+    height: 100vh;
+  }
+  .header-wrapper {
+    @apply h-40;
+  }
+  .header-wrapper h1 {
+    @apply text-5xl;
+  }
+  .weather-app-visual {
+    width: 92%;
+    height: 70%;
+    @apply ml-12;
+  }
+  .map-container {
+    @apply w-full p-4 ml-4;
+  }
+
+  .loader-container {
+  }
+  .loader-container img {
+  }
+  .loader-container h1 {
+  }
+
+  .button-control-wrapper {
+    left: -1rem;
+    @apply flex flex-col ml-12 w-64 p-4;
+  }
+  .button-control-wrapper h2 {
+    @apply text-2xl w-72;
+  }
+  .button-control-container div {
+  }
+  .button-control-container button {
+    @apply flex justify-center items-center border-2;
+  }
+  .button-marker {
+    @apply w-5 m-2;
+  }
+  .button-control-container button span {
+    @apply text-base p-2;
+  }
+  .location-info-container {
+    top: -24rem;
+    left: 25.5rem;
+    @apply w-64;
+  }
+  .location-info-container h2 {
+    @apply text-xl;
+  }
+  .location-info-container ul {
+    @apply text-base;
+  }
+}
+@media (min-width: 1023px) and (max-width: 1279px) {
+  .header-wrapper {
+    @apply h-28;
+  }
+  .header-wrapper h1 {
+    @apply text-4xl;
+  }
+  .weather-app-visual {
+    max-height: 80%;
+  }
+  .loader-container {
+  }
+  .loader-container img {
+  }
+  .loader-container h1 {
+  }
+  .button-control-wrapper h2 {
+    @apply text-xl w-72;
+  }
+  .button-control-container div {
+  }
+  .button-control-container button {
+    @apply flex justify-center items-center border-2;
+  }
+  .button-marker {
+    @apply w-5 m-2;
+  }
+  .button-control-container button span {
+    @apply text-base p-2;
+  }
+  .location-info-container {
+    top: -21rem;
+    left: 50rem;
+    @apply w-80;
+  }
+  .location-info-container h2 {
+    @apply text-xl;
+  }
+  .location-info-container ul {
+    @apply text-base;
+  }
 }

@@ -37,6 +37,7 @@ function App() {
       <Header/>
       <div className="weather-app-visual">
         { !loading ? <Map eventData = {eventData} showFires={showFires} showVolcanos={showVolcanos} showStorms={showStorms}/> : <Loader /> }
+        
         <ButtonControl 
           onClickFireEvents={(e) =>{
             e.preventDefault();
@@ -52,8 +53,8 @@ function App() {
             setShowStorms(!showStorms)}
           } 
         />
+
       </div>
-      
     </div>
   );
 }
