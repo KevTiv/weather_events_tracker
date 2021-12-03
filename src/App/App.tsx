@@ -4,6 +4,7 @@ import Loader from '../Components/Loader';
 import Map from '../Components/Map';
 import Header from '../Components/Header';
 import ButtonControl from '../Components/ButtonControl';
+import LocationInfoBox from '../Components/LocationInfoBox';
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
         console.error("Could not access NASA API")
       }
     }
+
     fetchEvents();
   },[]);
 
@@ -53,7 +55,6 @@ function App() {
             setShowStorms(!showStorms)}
           } 
         />
-
       </div>
     </div>
   );

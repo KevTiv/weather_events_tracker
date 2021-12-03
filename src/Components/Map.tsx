@@ -40,6 +40,7 @@ const Map = ({eventData, center, zoom, showFires, showVolcanos, showStorms}: map
                             id: event.id,
                             details: event.title
                         })
+                        
                     }}
                 />
             )
@@ -60,6 +61,7 @@ const Map = ({eventData, center, zoom, showFires, showVolcanos, showStorms}: map
                             id: event.id,
                             details: event.title
                         })
+                        
                     }}
                 />
             )
@@ -79,6 +81,7 @@ const Map = ({eventData, center, zoom, showFires, showVolcanos, showStorms}: map
                             id: event.id,
                             details: event.title
                         })
+                        
                     }}
                 />
             )
@@ -93,16 +96,18 @@ const Map = ({eventData, center, zoom, showFires, showVolcanos, showStorms}: map
     return (
         <>
             <div className="map-container">
-                <GoogleMapReact
-                    bootstrapURLKeys = {{key:googleMapApiKey!}}
-                    defaultCenter={center}
-                    defaultZoom={zoom}
-                >
-                    {/* <LocationFireMarker lat={center.lat} lng={center.lng} onClick={onClickFireIcon}/> */}
-                    {(showFires) ? fireMarkers : <></>}
-                    {(showVolcanos) ?volcanoMarkers : <></>}
-                    {(showStorms) ?IceMarkers : <></>}
-                </GoogleMapReact>
+                <div className="google-map">
+                    <GoogleMapReact
+                        bootstrapURLKeys = {{key:googleMapApiKey!}}
+                        defaultCenter={center}
+                        defaultZoom={zoom}
+                    >
+                        {/* <LocationFireMarker lat={center.lat} lng={center.lng} onClick={onClickFireIcon}/> */}
+                        {(showFires) ? fireMarkers : <></>}
+                        {(showVolcanos) ?volcanoMarkers : <></>}
+                        {(showStorms) ?IceMarkers : <></>}
+                    </GoogleMapReact>
+                </div>
                 {eventLocationInfo && <LocationInfoBox info={eventLocationInfo}/>}
             </div>
         </>
