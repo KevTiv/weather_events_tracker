@@ -23,18 +23,14 @@ const Map = ({eventData, center, zoom, showFires, showVolcanos, showStorms}: map
     //API key stored in .env file
     const googleMapApiKey:string|undefined = process.env.REACT_APP_GOOGLE_MAP_API_KEY;
     const [eventLocationInfo, setEventLocationInfo] = useState<infoProps>();
-    const onClickFireIcon = ()=>{
-        console.log('clicked')
-
-    }
 
     const fireMarkers = eventData.map((event:any) =>{
-        if(event.categories[0].id === 8){
+        if(event.categories[0].id === 'wildfires'){
             return(
                 <LocationFireMarker
                     key={event.id}  
-                    lat={event.geometries[0].coordinates[1]} 
-                    lng={event.geometries[0].coordinates[0]} 
+                    lat={event.geometry[0].coordinates[1]} 
+                    lng={event.geometry[0].coordinates[0]} 
                     onClick={()=>{
                         setEventLocationInfo({
                             id: event.id,
@@ -50,12 +46,12 @@ const Map = ({eventData, center, zoom, showFires, showVolcanos, showStorms}: map
         
     })
     const volcanoMarkers = eventData.map((event:any) =>{
-        if(event.categories[0].id === 12){
+        if(event.categories[0].id === 'volcanoes'){
             return(
                 <LocationVolcanoMarker
                     key={event.id}  
-                    lat={event.geometries[0].coordinates[1]} 
-                    lng={event.geometries[0].coordinates[0]} 
+                    lat={event.geometry[0].coordinates[1]} 
+                    lng={event.geometry[0].coordinates[0]} 
                     onClick={()=>{
                         setEventLocationInfo({
                             id: event.id,
@@ -69,13 +65,13 @@ const Map = ({eventData, center, zoom, showFires, showVolcanos, showStorms}: map
             return null;
         }
     })
-    const IceMarkers = eventData.map((event:any) =>{
-        if(event.categories[0].id === 10){
+    const stormMarkers = eventData.map((event:any) =>{
+        if(event.categories[0].id === 'severeStorms'){
             return(
                 <LocationStormMarker
                     key={event.id}  
-                    lat={event.geometries[0].coordinates[1]} 
-                    lng={event.geometries[0].coordinates[0]} 
+                    lat={event.geometry[0].coordinates[1]} 
+                    lng={event.geometry[0].coordinates[0]} 
                     onClick={()=>{
                         setEventLocationInfo({
                             id: event.id,
@@ -105,7 +101,7 @@ const Map = ({eventData, center, zoom, showFires, showVolcanos, showStorms}: map
                         {/* <LocationFireMarker lat={center.lat} lng={center.lng} onClick={onClickFireIcon}/> */}
                         {(showFires) ? fireMarkers : <></>}
                         {(showVolcanos) ?volcanoMarkers : <></>}
-                        {(showStorms) ?IceMarkers : <></>}
+                        {(showStorms) ?stormMarkers : <></>}
                     </GoogleMapReact>
                 </div>
                 {eventLocationInfo && <LocationInfoBox info={eventLocationInfo}/>}

@@ -4,7 +4,7 @@ import Loader from '../Components/Loader';
 import Map from '../Components/Map';
 import Header from '../Components/Header';
 import ButtonControl from '../Components/ButtonControl';
-import LocationInfoBox from '../Components/LocationInfoBox';
+import Footer from '../Components/Footer';
 
 
 function App() {
@@ -18,10 +18,10 @@ function App() {
   useEffect(() => {
     const fetchEvents = async ()=>{
       
-      const nasaApiUrl:string = process.env.REACT_APP_NASA_EVENT_API!;
+      const nasaApiUrlV3:string = process.env.REACT_APP_NASA_EVENT_API_V3!;
       try {
         setLoading(true);
-        const res = await fetch(nasaApiUrl);
+        const res = await fetch(nasaApiUrlV3);
         const { events } = await res.json();
 
         setEventData(events);
@@ -56,6 +56,7 @@ function App() {
           } 
         />
       </div>
+      <Footer/>
     </div>
   );
 }

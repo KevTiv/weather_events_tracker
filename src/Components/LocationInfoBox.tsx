@@ -28,10 +28,10 @@ const LocationInfoBox = ({info}:locationInfoProps) => {
             
         }
         getInfo();
-    },[info.id])
+    },[info]);
     return (
         <>
-            <div className="location-info-container ">
+            <div className="location-info-container">
                 <h2>Weather Event Info</h2>
                 <ul>
                     <li> Id: <strong>{eventId}</strong></li>

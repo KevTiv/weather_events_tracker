@@ -1,5 +1,4 @@
-import LoadSpinner from '../Utils/Img/LoadSpinner.gif'
-import BarLoaderAnimation from '../Utils/Img/barLoaderAnimation.svg'
+import BarLoaderAnimation from '../Utils/Img/barLoaderAnimation.svg';
 const Loader = () => {
     return (
         <>
