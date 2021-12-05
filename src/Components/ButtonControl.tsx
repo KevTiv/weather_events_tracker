@@ -25,7 +25,7 @@ const ButtonControl = ({onClickFireEvents, onClickVolcanosEvents, onClickStormsE
                     </div>
                     <div>
                         <button onClick={onClickVolcanosEvents}>
-                            <Icon icon={locationVolcanoIcon} className="button-marker text-brown-400"/>
+                            <Icon icon={locationVolcanoIcon} className="button-marker text-yellow-400"/>
                             <span>Volcano events</span>
                         </button>
                     </div>

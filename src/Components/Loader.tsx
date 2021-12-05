@@ -5,7 +5,7 @@ const Loader = () => {
             <div className="loader-container">
                 <img  src={BarLoaderAnimation} alt="Loading..."/>
                 
-                <h1 >Fetching Data...</h1>
+                <h1>Loading...</h1>
             </div>
         </>
     )

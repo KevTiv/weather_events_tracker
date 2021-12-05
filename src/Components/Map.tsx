@@ -2,6 +2,7 @@ import {useState} from 'react';
 import GoogleMapReact from 'google-map-react';
 import {LocationFireMarker, LocationVolcanoMarker, LocationStormMarker} from './LocationMarker';
 import LocationInfoBox from './LocationInfoBox';
+
 //Props defintions for TS.
 type mapProps = {
     eventData: any[],
@@ -23,7 +24,7 @@ const Map = ({eventData, center, zoom, showFires, showVolcanos, showStorms}: map
     //API key stored in .env file
     const googleMapApiKey:string|undefined = process.env.REACT_APP_GOOGLE_MAP_API_KEY;
     const [eventLocationInfo, setEventLocationInfo] = useState<infoProps>();
-
+    //Fire markers object
     const fireMarkers = eventData.map((event:any) =>{
         if(event.categories[0].id === 'wildfires'){
             return(
@@ -45,6 +46,7 @@ const Map = ({eventData, center, zoom, showFires, showVolcanos, showStorms}: map
         }
         
     })
+    //Volcano markers object
     const volcanoMarkers = eventData.map((event:any) =>{
         if(event.categories[0].id === 'volcanoes'){
             return(
@@ -65,6 +67,7 @@ const Map = ({eventData, center, zoom, showFires, showVolcanos, showStorms}: map
             return null;
         }
     })
+    //Storm markers object
     const stormMarkers = eventData.map((event:any) =>{
         if(event.categories[0].id === 'severeStorms'){
             return(
@@ -85,10 +88,6 @@ const Map = ({eventData, center, zoom, showFires, showVolcanos, showStorms}: map
             return null;
         }
     })
-    // showFires: boolean,
-    //     showVolcanos: boolean,
-    //     showStorms: boolean,
-    //     showAll: boolean
     return (
         <>
             <div className="map-container">
@@ -98,10 +97,9 @@ const Map = ({eventData, center, zoom, showFires, showVolcanos, showStorms}: map
                         defaultCenter={center}
                         defaultZoom={zoom}
                     >
-                        {/* <LocationFireMarker lat={center.lat} lng={center.lng} onClick={onClickFireIcon}/> */}
                         {(showFires) ? fireMarkers : <></>}
-                        {(showVolcanos) ?volcanoMarkers : <></>}
-                        {(showStorms) ?stormMarkers : <></>}
+                        {(showVolcanos) ? volcanoMarkers : <></>}
+                        {(showStorms) ? stormMarkers : <></>}
                     </GoogleMapReact>
                 </div>
                 {eventLocationInfo && <LocationInfoBox info={eventLocationInfo}/>}
@@ -113,6 +111,7 @@ const Map = ({eventData, center, zoom, showFires, showVolcanos, showStorms}: map
 //Default location the google map react component will load to.
 Map.defaultProps = {
     center: {
+        //Ajacio, corsica, france geo location.
         lat: 41.926701,
         lng: 8.736900
     },

@@ -8,6 +8,7 @@ import Footer from '../Components/Footer';
 
 
 function App() {
+  const [currentYear, setCurrentYear] = useState<number>(0);
   const [eventData, setEventData] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
   
@@ -16,6 +17,10 @@ function App() {
   const [showStorms, setShowStorms] = useState<boolean>(false);
 
   useEffect(() => {
+    const currentYear = ()=>{
+      const curDate = new Date();
+      setCurrentYear(curDate.getFullYear());
+    }
     const fetchEvents = async ()=>{
       
       const nasaApiUrlV3:string = process.env.REACT_APP_NASA_EVENT_API_V3!;
@@ -32,6 +37,7 @@ function App() {
     }
 
     fetchEvents();
+    currentYear();
   },[]);
 
   return (
@@ -56,7 +62,7 @@ function App() {
           } 
         />
       </div>
-      <Footer/>
+      <Footer currentYear={currentYear}/>
     </div>
   );
 }

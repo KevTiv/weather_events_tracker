@@ -11,14 +11,57 @@
     #ced4da
   );
   --app-linear-gradient-bg: linear-gradient(to bottom right, #e9ecef, #ced4da);
-  --header-h1-color: #2e3151;
-  --title-color: #2e3151;
+  --header-color: #2e3151;
+  --text-color: #2e3151;
   --container-bg-color: #dee2e6;
   --app-bg-opt-color: #fec89a;
   --ap-bg-opt-color-2: #f9dcc4;
   --button-border-color: #ced4da;
   --button-hover-bg: #fbeadc;
   --button-hover: linear-gradient(0.15turn, #f8f9fa, #e9ecef, #dee2e6);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --app-bg-color: ##111827;
+    --app-webkit-linear-gradient-bg: -webkit-linear-gradient(
+      to top left,
+      #111827,
+      #1f2937,
+      #374151
+    );
+    --app-moz-linear-gradient-bg: -moz-linear-gradient(
+      to top left,
+      #111827,
+      #1f2937,
+      #374151
+    );
+    --app-linear-gradient-bg: linear-gradient(
+      to top left,
+      #111827,
+      #1f2937,
+      #374151
+    );
+    --header-color: #d1d5db;
+    --text-color: #d1d5db;
+    --container-bg-color: #1f2937;
+    --app-bg-opt-color: #fec89a;
+    --ap-bg-opt-color-2: #f9dcc4;
+    --button-border-color: #374151;
+    --button-hover-bg: #4b5563;
+    --button-hover: linear-gradient(0.15turn, #4b5563, #4b5563, #374151);
+    --social-link-container-bg-color: linear-gradient(
+      to top left,
+      #111827,
+      #1f2937,
+      #374151
+    );
+    --social-link-container-bg-hover: linear-gradient(
+      0.15turn,
+      #4b5563,
+      #4b5563,
+      #374151
+    );
+  }
 }
 .App {
   width: 100vw;
@@ -38,13 +81,12 @@
   @apply w-full p-0 top-0 left-0 h-40 z-10 flex items-center justify-start;
 }
 .header-wrapper h1 {
-  color: var(--header-h1-color);
+  color: var(--header-color);
   @apply text-4xl font-bold ml-12 shadow-lg p-4;
 }
 
 .weather-app-visual {
   width: 100%;
-  aspect-ratio: 1;
   @apply inline-grid grid-cols-4 gap-x-4;
 }
 .map-container,
@@ -64,7 +106,7 @@
   @apply flex justify-center items-center;
 }
 .loader-container h1 {
-  color: var(--header-h1-color);
+  color: var(--header-color);
   @apply text-2xl flex justify-center items-center;
 }
 
@@ -81,7 +123,7 @@
   @apply col-span-1 p-6 rounded-xl shadow-xl;
 }
 .button-control-wrapper h2 {
-  color: var(--title-color);
+  color: var(--header-color);
   @apply text-2xl font-extrabold;
 }
 .button-control-container div {
@@ -92,7 +134,7 @@
   width: 12rem;
   min-width: 80px;
   max-width: 350px;
-  color: var(--title-color);
+  color: var(--text-color);
   border-color: var(--button-border-color);
 
   @apply border-2 font-semibold mx-2
@@ -109,7 +151,7 @@
 .location-info-container {
   z-index: 3;
   top: 3.5rem;
-  color: var(--title-color);
+
   background-color: var(--container-bg-color);
   opacity: 95%;
   height: max(15rem, 10vh);
@@ -118,11 +160,13 @@
   @apply shadow-lg relative col-span-2 ml-4;
 }
 .location-info-container h2 {
+  color: var(--text-color);
   font-size: calc(4px + 0.95rem);
   line-height: calc(12px + 0.75rem);
   @apply p-4 font-bold;
 }
 .location-info-container ul {
+  color: var(--text-color);
   font-size: calc(1px + 0.75rem);
   line-height: calc(8px + 0.75rem);
   @apply p-3 font-semibold;
@@ -136,6 +180,7 @@
     lg:grid-cols-3 xl:grid-cols-4 md:gap-8 gap-4;
 }
 .footer-container-wrapper div {
+  color: var(--text-color) !important;
   @apply flex justify-center flex-col flex-shrink-0;
 }
 .footer-img-container h1 {
@@ -145,7 +190,7 @@
   @apply w-52 mx-auto;
 }
 .footer-container-wrapper div p {
-  @apply text-sm leading-none text-gray-800 mt-4;
+  @apply text-sm leading-none mt-4;
 }
 .footer-socials-container {
   display: flex !important;
@@ -153,7 +198,12 @@
   @apply items-center gap-x-4 mt-4;
 }
 .social-link-container {
-  @apply opacity-50 w-8 h-8 flex-shrink-0 text-gray-100 text-2xl bg-gray-800 cursor-pointer hover:bg-gray-700 rounded-full flex items-center justify-center;
+  color: var(--text-color) !important;
+  background: var(--social-link-container-bg-color);
+  @apply opacity-50 w-8 h-8 flex-shrink-0 text-2xl cursor-pointer rounded-full flex items-center justify-center;
+}
+.social-link-container:hover {
+  background: var(--social-link-container-bg-hover);
 }
 
 @media (max-width: 639px) {
