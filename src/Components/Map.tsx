@@ -23,8 +23,9 @@ type infoProps={
 //Google map component
 const Map = ({eventData, center, zoom, showFires, showVolcanos, showStorms}: mapProps) => {
     //API key stored in .env file
-    const googleMapApiKey:string|undefined = process.env.REACT_APP_GOOGLE_MAP_API_KEY;
-    const [eventLocationInfo, setEventLocationInfo] = useState<infoProps>();
+    // const googleMapApiKey:string|undefined = process.env.REACT_APP_GOOGLE_MAP_API_KEY;
+    // const [eventLocationInfo, setEventLocationInfo] = useState<infoProps>();
+    
     //Fire markers object
     const fireMarkers = eventData.map((event:any) =>{
         if(event.categories[0].id === 'wildfires'){
