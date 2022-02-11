@@ -1,4 +1,5 @@
 {
+  "homepage": "https://kevtiv.github.io/weather_events_tracker",
   "name": "wildfire_tracker",
   "version": "0.1.0",
   "private": true,

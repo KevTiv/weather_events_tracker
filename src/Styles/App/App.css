@@ -95,11 +95,13 @@
   width: max(250px, 60vw);
   background-color: var(--container-bg-color);
   aspect-ratio: 1.5;
+  overflow: hidden;
   @apply p-6 col-span-3 ml-9 shadow-xl rounded-xl inline-grid grid-cols-6;
 }
 
 .leaflet-container {
-  width: inherit;
+  width: 600%;
+  border-radius: 0.5rem;
 }
 .loader-container {
   @apply flex flex-col;
@@ -114,11 +116,11 @@
   @apply text-2xl flex justify-center items-center;
 }
 
-.google-map {
+/* .google-map {
   height: 100%;
   width: 150%;
   @apply col-span-4;
-}
+} */
 .button-control-wrapper {
   background-color: var(--container-bg-color);
   height: calc(290px + 2vh);
