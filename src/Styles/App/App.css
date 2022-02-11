@@ -92,10 +92,14 @@
 .map-container,
 .loader-container {
   height: max(40rem, 55vh);
-  width: max(250px, 95%);
+  width: max(250px, 60vw);
   background-color: var(--container-bg-color);
   aspect-ratio: 1.5;
   @apply p-6 col-span-3 ml-9 shadow-xl rounded-xl inline-grid grid-cols-6;
+}
+
+.leaflet-container {
+  width: inherit;
 }
 .loader-container {
   @apply flex flex-col;
@@ -227,11 +231,12 @@
   .map-container,
   .loader-container {
     background-color: transparent;
+    width: 90vw;
     height: 55vh;
     top: 18vh;
     @apply ml-3 relative flex justify-center items-center;
   }
-  .google-map {
+  .leaflet-container {
     width: 95%;
     height: 95%;
     @apply p-2 ml-1 mt-3 absolute;
