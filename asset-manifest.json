@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/weather_events_tracker/static/css/main.62ef26f0.chunk.css",
+    "main.js": "/weather_events_tracker/static/js/main.0efabbf1.chunk.js",
+    "main.js.map": "/weather_events_tracker/static/js/main.0efabbf1.chunk.js.map",
+    "runtime-main.js": "/weather_events_tracker/static/js/runtime-main.29ed1ee8.js",
+    "runtime-main.js.map": "/weather_events_tracker/static/js/runtime-main.29ed1ee8.js.map",
+    "static/js/2.3ae5028f.chunk.js": "/weather_events_tracker/static/js/2.3ae5028f.chunk.js",
+    "static/js/2.3ae5028f.chunk.js.map": "/weather_events_tracker/static/js/2.3ae5028f.chunk.js.map",
+    "static/js/3.24c68687.chunk.js": "/weather_events_tracker/static/js/3.24c68687.chunk.js",
+    "static/js/3.24c68687.chunk.js.map": "/weather_events_tracker/static/js/3.24c68687.chunk.js.map",
+    "index.html": "/weather_events_tracker/index.html",
+    "static/css/main.62ef26f0.chunk.css.map": "/weather_events_tracker/static/css/main.62ef26f0.chunk.css.map",
+    "static/js/2.3ae5028f.chunk.js.LICENSE.txt": "/weather_events_tracker/static/js/2.3ae5028f.chunk.js.LICENSE.txt",
+    "static/media/barLoaderAnimation.a4ae9ca3.svg": "/weather_events_tracker/static/media/barLoaderAnimation.a4ae9ca3.svg",
+    "static/media/nasa_logo.6ba3dcf7.png": "/weather_events_tracker/static/media/nasa_logo.6ba3dcf7.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.29ed1ee8.js",
+    "static/js/2.3ae5028f.chunk.js",
+    "static/css/main.62ef26f0.chunk.css",
+    "static/js/main.0efabbf1.chunk.js"
+  ]
+}
