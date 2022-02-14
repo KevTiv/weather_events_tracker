@@ -1,7 +1,13 @@
-import {useState} from 'react';
+/* import {useState} from 'react';
 import GoogleMapReact from 'google-map-react';
 import {LocationFireMarker, LocationVolcanoMarker, LocationStormMarker} from './LocationMarker';
-import LocationInfoBox from './LocationInfoBox';
+
+import locationFireIcon from '@iconify/icons-ic/outline-local-fire-department';
+import locationVolcanoIcon from '@iconify/icons-emojione-monotone/snow-capped-mountain';
+import locationCloudIcon from '@iconify/icons-wi/storm-showers';
+
+import LocationInfoBox from './LocationInfoBox';*/
+
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 
 //Props defintions for TS.
@@ -16,16 +22,18 @@ type mapProps = {
     showVolcanos: boolean,
     showStorms: boolean
 }
-type infoProps={
-    id: string,
-    details: string
-}
+// type infoProps={
+//     id: string,
+//     details: string
+// }
+
 //Google map component
 const Map = ({eventData, center, zoom, showFires, showVolcanos, showStorms}: mapProps) => {
     //API key stored in .env file
     // const googleMapApiKey:string|undefined = process.env.REACT_APP_GOOGLE_MAP_API_KEY;
     // const [eventLocationInfo, setEventLocationInfo] = useState<infoProps>();
     
+   
     //Fire markers object
     const fireMarkers = eventData.map((event:any) =>{
         if(event.categories[0].id === 'wildfires'){
@@ -70,6 +78,7 @@ const Map = ({eventData, center, zoom, showFires, showVolcanos, showStorms}: map
                         
                 //     }}
                 // />
+
                 <Marker position={[event.geometry[0].coordinates[1],event.geometry[0].coordinates[0]]}>
                     <Popup>
                         <h2>id: {event.id},</h2><br/>
