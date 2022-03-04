@@ -1,46 +1,17 @@
-# Getting Started with Create React App
+# WEATHER EVENT TRACKER
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+# LIVE DEMO
+https://kevtiv.github.io/weather_events_tracker/
+# DESCRIPTION
+- Web app built to take advantage of the public Nasa API that tracks weather events such as wildfire, marine storms and active volcanoes across the globe.
+# GOAL
+- Create an application that could update an end user with locations of severe weather events such as wildfire, maritime storms and active volcanoes.
+# CHALLENGES
+- Converts the response result form the Nasa API into useful data markers that will be used to populate our map API.
+# SOLUTION IMPLEMENTED
+- I used the locations information and weather events information from each weather events returned by the Nasa API to create markers using the leaflet map 
+  library marker functions. The markers are then displayed on a map also derived from the leaflet library. I also implemented a control panel where the 
+  user can choose which type of weather events are being displayed on the map. A modal panel also appears when a user click on an individual marker to reveal 
+  more info on the weather event occurring at that marker location.
+# FUTURE IMPROVEMENT
+- Differentiate the different weather marker with different color coding for a better visual experience.
