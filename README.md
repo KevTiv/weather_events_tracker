@@ -1,5 +1,7 @@
 # WEATHER EVENT TRACKER
 
+![website screenshot](https://github.com/KevTiv/weather_events_tracker/blob/master/img_src/img1.svg)
+
 # LIVE DEMO
 https://kevtiv.github.io/weather_events_tracker/
 # DESCRIPTION
